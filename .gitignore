@@ -1,0 +1,4 @@
+.npm-recovery-codes
+*.tgz
+dist/
+node_modules/

@@ -1,0 +1,52 @@
+{
+  "name": "@kubova/mcp",
+  "version": "0.1.5",
+  "description": "Model Context Protocol (MCP) server for the Kubova 3D container loading calculator — plan container and pallet loads from any AI assistant.",
+  "license": "MIT",
+  "homepage": "https://kubova.com",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Kubova-com/kubova-mcp.git"
+  },
+  "bugs": {
+    "url": "https://kubova.com/contact"
+  },
+  "keywords": [
+    "mcp",
+    "model context protocol",
+    "container loading",
+    "load planning",
+    "logistics",
+    "freight",
+    "packing",
+    "pallet",
+    "container calculator",
+    "ai agent",
+    "ai tools"
+  ],
+  "author": "Kubova (https://kubova.com)",
+  "type": "module",
+  "bin": {
+    "kubova-mcp": "./dist/index.js"
+  },
+  "files": [
+    "dist"
+  ],
+  "scripts": {
+    "build": "tsc",
+    "dev": "tsx src/index.ts",
+    "prepublishOnly": "pnpm build"
+  },
+  "dependencies": {
+    "@modelcontextprotocol/sdk": "^1.0.0",
+    "zod": "^3.25.0"
+  },
+  "devDependencies": {
+    "@types/node": "^22.0.0",
+    "tsx": "^4.19.0",
+    "typescript": "^5.9.0"
+  },
+  "engines": {
+    "node": ">=20"
+  }
+}
