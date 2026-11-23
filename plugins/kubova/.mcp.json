@@ -1,0 +1,8 @@
+{
+  "mcpServers": {
+    "kubova": {
+      "type": "http",
+      "url": "https://kubova.com/mcp"
+    }
+  }
+}

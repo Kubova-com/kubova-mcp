@@ -1,0 +1,32 @@
+[
+  {
+    "id": "20dc",
+    "name": "20' DC",
+    "innerLengthCm": 589.8,
+    "innerWidthCm": 235.2,
+    "innerHeightCm": 239.3,
+    "doorWidthCm": 234,
+    "doorHeightCm": 228,
+    "maxPayloadKg": 28200
+  },
+  {
+    "id": "40dc",
+    "name": "40' DC",
+    "innerLengthCm": 1203.5,
+    "innerWidthCm": 235.2,
+    "innerHeightCm": 239.3,
+    "doorWidthCm": 234,
+    "doorHeightCm": 228,
+    "maxPayloadKg": 28800
+  },
+  {
+    "id": "40hc",
+    "name": "40' HC",
+    "innerLengthCm": 1203.5,
+    "innerWidthCm": 235.2,
+    "innerHeightCm": 269.5,
+    "doorWidthCm": 234,
+    "doorHeightCm": 257.7,
+    "maxPayloadKg": 28620
+  }
+]

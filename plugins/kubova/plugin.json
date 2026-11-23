@@ -1,0 +1,100 @@
+{
+  "$schema": "https://agent-plugins.org/schemas/1.0.0/plugin.schema.json",
+  "name": "kubova",
+  "version": "1.0.0",
+  "description": "Plan container and pallet loads in 3D: pack cargo into shipping containers, see how many complete products fit in one container, and create a PDF load report. Connects to your Kubova account.",
+  "author": {
+    "name": "Kubova",
+    "email": "contact@kubova.com",
+    "url": "https://kubova.com"
+  },
+  "homepage": "https://kubova.com/en/docs/mcp",
+  "repository": "https://github.com/Kubova-com/kubova-mcp",
+  "license": "MIT",
+  "keywords": ["container loading", "load planning", "logistics", "freight", "pallet", "shipping"],
+  "extensions": {
+    "com.openai": {
+      "interface": {
+        "displayName": "Kubova",
+        "shortDescription": "3D container load planning",
+        "longDescription": "Kubova plans how cargo fits into shipping containers and onto pallets, in 3D.\n\nTell ChatGPT the cartons you ship (size, weight, quantity) and the container you use, and Kubova returns a load plan: which pieces go where, in the order to load them, how many containers the shipment needs, volume and weight used per container, the weight balance, and any pieces that did not fit. It can stack cartons on pallets first and then load the pallets, respect cartons that must stay upright or carry nothing on top, and keep cargo that comes out first near the door. It also answers how many complete products (sets of one or more cartons) fit in a 20' or 40' container, and creates a PDF load report with 3D views of a plan.\n\nFor exporters, importers, freight forwarders, warehouse and logistics teams who plan container shipments.\n\nWhat it does not do: freight rates, bookings, customs or shipment tracking. Sizes are in centimetres and weights in kilograms; ChatGPT converts inches and pounds before the calculation.\n\nRequires a Kubova account. Calculations count toward the monthly limits of that account's plan. Cargo data is used for the calculation; see the privacy policy.",
+        "developerName": "Kubova",
+        "category": "Productivity",
+        "capabilities": [
+          "Plan how cartons load into one or more shipping containers",
+          "Stack cartons on pallets, then load the pallets",
+          "Count how many complete products fit in a container",
+          "Create a PDF load report with 3D views",
+          "Send feedback to the Kubova team when you ask"
+        ],
+        "websiteURL": "https://kubova.com",
+        "supportURL": "https://kubova.com/en/contact",
+        "privacyPolicyURL": "https://kubova.com/en/privacy",
+        "termsOfServiceURL": "https://kubova.com/en/terms",
+        "defaultPrompt": [
+          "How many 60x40x40 cm cartons of 18 kg fit in a 40' HC?",
+          "Plan a load for my shipment: 3 SKUs into 20' containers.",
+          "How many sets of a 2-carton table fit in a 40' container?"
+        ],
+        "brandColor": "#EF4444",
+        "composerIcon": "./assets/icon.png",
+        "logo": "./assets/icon.png"
+      },
+      "review": {
+        "test_cases": {
+          "positive": [
+            {
+              "description": "Plan a mixed load into one container type",
+              "prompt": "Plan a 40' HC load: 300 cartons 60x40x40 cm 18 kg, 120 cartons 80x60x50 cm 25 kg, 40 cartons 120x80x100 cm 90 kg that must stay upright.",
+              "tools_triggered": "pack_containers",
+              "expected_behavior": "Calls pack_containers once with the three SKUs in cm and kg, the 40' HC from the standard sizes and the upright limit on the third SKU. The answer states pieces loaded against pieces requested, containers used, volume utilization and weight per container, and lists any unplaced pieces, all taken from the tool result."
+            },
+            {
+              "description": "Imperial units are converted before the call",
+              "prompt": "I ship 500 boxes of 24 x 16 x 12 inches, 40 lb each. How many 40' DC containers do I need?",
+              "tools_triggered": "pack_containers",
+              "expected_behavior": "Shows the boxes converted to centimetres and kilograms, calls pack_containers with the 40' DC, and reports the number of containers used and the loaded pieces from the tool result."
+            },
+            {
+              "description": "Pallet loading",
+              "prompt": "Stack 200 cartons of 40x30x30 cm, 12 kg on 120x80 cm pallets (15 cm base, stack up to 150 cm, 1000 kg max, 25 kg pallet), then load the pallets into a 20' DC.",
+              "tools_triggered": "pack_containers",
+              "expected_behavior": "Calls pack_containers with loadingMode pallet and the described pallet, then reports pallets and cartons loaded, containers used and any unplaced cartons from the tool result."
+            },
+            {
+              "description": "Products per container",
+              "prompt": "A table ships as 2 cartons: top 160x90x8 cm 22 kg and legs 80x20x20 cm 9 kg. How many complete tables fit in each standard container?",
+              "tools_triggered": "estimate_capacity",
+              "expected_behavior": "Calls estimate_capacity with one product of two cartons (qtyPerSet 1 each) and no containers, and reports the complete sets per 20' DC, 40' DC and 40' HC with the limiting factor the tool gives for each."
+            },
+            {
+              "description": "PDF report of the plan just made",
+              "prompt": "Plan 150 cartons of 50x50x50 cm, 20 kg into a 20' DC, then give me the PDF load report of that plan.",
+              "tools_triggered": "pack_containers, generate_report",
+              "expected_behavior": "Calls pack_containers, then generate_report with the result of that call, and returns the PDF report of the same plan."
+            }
+          ],
+          "negative": [
+            {
+              "description": "Freight rates are out of scope",
+              "prompt": "What does a 40' container from Ho Chi Minh City to Los Angeles cost next month?"
+            },
+            {
+              "description": "Bookings are out of scope",
+              "prompt": "Book two 40' HC containers with a shipping line for next Friday."
+            },
+            {
+              "description": "Account changes are out of scope",
+              "prompt": "Delete my Kubova account and all my saved loads."
+            }
+          ]
+        },
+        "commerce": false,
+        "commerce_description": "Kubova does not sell products or take payments in ChatGPT. Users sign in to an existing Kubova account."
+      },
+      "publication": {
+        "release_notes": "First release: container and pallet load plans, products per container, PDF load reports and feedback."
+      }
+    }
+  }
+}

@@ -4,6 +4,25 @@ Model Context Protocol server for the [Kubova](https://kubova.com) container loa
 
 Lets Claude, Cursor, Cline, ChatGPT, n8n, and any other MCP-aware AI agent pack shipping containers as a tool call.
 
+## Connector and Claude Code plugin (no API key)
+
+The quickest way in is the remote connector `https://kubova.com/mcp`: your AI assistant opens a sign-in to your
+Kubova account, with no API key and no install. It works on every plan, the Free plan included, and tool calls
+count toward the same monthly limits as the web calculator.
+
+- **Claude Code:** this repository is also a plugin marketplace.
+
+  ```
+  /plugin marketplace add Kubova-com/kubova-mcp
+  /plugin install kubova@kubova
+  ```
+
+  The plugin adds the connector and the `plan-container-load` skill. See [plugins/kubova/README.md](plugins/kubova/README.md).
+- **Claude (claude.ai, Desktop, mobile):** Settings → Connectors → add a custom connector with `https://kubova.com/mcp`.
+- **ChatGPT:** Settings → Apps & Connectors → Developer mode → Create, with `https://kubova.com/mcp`.
+
+The rest of this page covers the local npm package below, which signs in with an API key instead.
+
 ## Install
 
 ```bash

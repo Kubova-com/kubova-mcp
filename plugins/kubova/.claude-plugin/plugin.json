@@ -1,0 +1,14 @@
+{
+  "name": "kubova",
+  "displayName": "Kubova",
+  "version": "1.0.0",
+  "description": "Plan container and pallet loads in 3D from Claude: pack cargo into shipping containers, see how many complete products fit in one container, and create a PDF load report. Connects to your Kubova account.",
+  "author": {
+    "name": "Kubova",
+    "url": "https://kubova.com"
+  },
+  "homepage": "https://kubova.com/en/docs/mcp",
+  "repository": "https://github.com/Kubova-com/kubova-mcp",
+  "license": "MIT",
+  "keywords": ["container loading", "load planning", "logistics", "freight", "pallet", "shipping"]
+}

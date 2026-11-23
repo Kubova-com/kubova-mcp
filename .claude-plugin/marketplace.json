@@ -1,0 +1,15 @@
+{
+  "name": "kubova",
+  "description": "Kubova plugins for Claude: 3D container and pallet load planning.",
+  "owner": {
+    "name": "Kubova",
+    "url": "https://kubova.com"
+  },
+  "plugins": [
+    {
+      "name": "kubova",
+      "source": "./plugins/kubova",
+      "description": "Plan container and pallet loads in 3D, estimate container capacity and create PDF load reports from your Kubova account."
+    }
+  ]
+}
