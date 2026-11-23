@@ -14,10 +14,10 @@ count toward the same monthly limits as the web calculator.
 
   ```
   /plugin marketplace add Kubova-com/kubova-mcp
-  /plugin install kubova@kubova
+  /plugin install kubova-plugin@kubova
   ```
 
-  The plugin adds the connector and the `plan-container-load` skill. See [plugins/kubova/README.md](plugins/kubova/README.md).
+  The plugin adds the connector and the `plan-container-load` skill. See [plugins/kubova-plugin/README.md](plugins/kubova-plugin/README.md).
 - **Claude (claude.ai, Desktop, mobile):** Settings → Connectors → add a custom connector with `https://kubova.com/mcp`.
 - **ChatGPT:** Settings → Apps & Connectors → Developer mode → Create, with `https://kubova.com/mcp`.
 

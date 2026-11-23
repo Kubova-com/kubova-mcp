@@ -7,8 +7,8 @@
   },
   "plugins": [
     {
-      "name": "kubova",
-      "source": "./plugins/kubova",
+      "name": "kubova-plugin",
+      "source": "./plugins/kubova-plugin",
       "description": "Plan container and pallet loads in 3D, estimate container capacity and create PDF load reports from your Kubova account."
     }
   ]

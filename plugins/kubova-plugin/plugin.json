@@ -1,7 +1,7 @@
 {
   "$schema": "https://agent-plugins.org/schemas/1.0.0/plugin.schema.json",
-  "name": "kubova",
-  "version": "1.0.0",
+  "name": "kubova-plugin",
+  "version": "1.0.1",
   "description": "Plan container and pallet loads in 3D: pack cargo into shipping containers, see how many complete products fit in one container, and create a PDF load report. Connects to your Kubova account.",
   "author": {
     "name": "Kubova",

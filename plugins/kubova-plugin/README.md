@@ -10,7 +10,7 @@ Claude Code:
 
 ```
 /plugin marketplace add Kubova-com/kubova-mcp
-/plugin install kubova@kubova
+/plugin install kubova-plugin@kubova
 ```
 
 Claude (claude.ai, Desktop, mobile): Settings → Connectors → add the custom connector `https://kubova.com/mcp`.
